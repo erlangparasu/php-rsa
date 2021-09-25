@@ -13,7 +13,7 @@ _create_rsa($path_private_key, $path_public_key);
 
 _encrypt_rsa($public_key, $text);
 
-_decrypt_rsa($private_key, $encrypted);
+_decrypt_rsa($private_key, $encrypted_text);
 
 _big_encrypt_rsa($public_key, $text);
 
