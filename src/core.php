@@ -50,10 +50,12 @@ function _encrypt_rsa($public_key, $text)
     throw new Exception("Error encrypt failed", 1);
 }
 
-function _decrypt_rsa($private_key, $encrypted)
+function _decrypt_rsa($private_key, $encrypted_hex)
 {
+    $bin = hex2bin($encrypted_hex);
+
     // Decrypt the data using the private key
-    $success = openssl_private_decrypt($encrypted, $decrypted, $private_key);
+    $success = openssl_private_decrypt($bin, $decrypted, $private_key);
 
     // echo "This is the decrypted text: $decrypted\n\n";
 
@@ -86,7 +88,7 @@ function _big_decrypt_rsa($private_key, $encrypted_text)
     $encrypted_chunks = explode('.', $encrypted_text);
     $plain_chunks = [];
     foreach ($encrypted_chunks as $encrypted_hex) {
-        $plain_part = _decrypt_rsa($private_key, hex2bin($encrypted_hex));
+        $plain_part = _decrypt_rsa($private_key, $encrypted_hex);
         $plain_chunks[] = $plain_part;
     }
     $plain_text = implode('', $plain_chunks);
