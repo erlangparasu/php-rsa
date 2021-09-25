@@ -1,0 +1,22 @@
+{
+    "name": "erlangparasu/php-rsa",
+    "description": "PHP OPENSSL RSA encrypt and decrypt",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Erlang Parasu",
+            "email": "erlangparasu@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "src/core.php"
+        ]
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "ext-mbstring": "*",
+        "ext-openssl": "*"
+    }
+}
